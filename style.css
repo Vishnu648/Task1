@@ -1,0 +1,61 @@
+*{
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+    box-sizing: border-box;
+}
+.signContainer{
+    background-color: antiquewhite;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20vh;
+}
+.form{
+    margin-top: 5vh;
+    display: flex;
+    flex-direction: column;
+    width: 50vw;
+    gap: 15px;
+    align-items: center;
+}
+.userForm{
+    padding: 15px;
+    width: 30vw;
+    border: 1px solid blanchedalmond;
+    outline-color: black;
+    border-radius: 8px;
+}
+.regButton{
+    padding: 10px;
+    width: 15vw;
+    cursor: pointer;
+    background-color: black;
+    color: white;
+    font-size: medium;
+    outline: none;
+    border: none;
+    border-radius: 8px;
+}
+.registerLogin{
+    width: 30vw;
+    margin-top: 10px;
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 10px;
+}
+
+/* Home */
+.container{
+    background-color: antiquewhite;
+    height: 100vh;
+    width: 100vw;
+}
+.homeNav{
+    background-color: white;
+    width: 100vw;
+    padding: 1rem;
+    display: flex;
+    justify-content: flex-end;
+}
