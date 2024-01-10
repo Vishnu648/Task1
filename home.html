@@ -1,21 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Home</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css" />
     <script src="script.js"></script>
     <script>
+      document.addEventListener("DOMContentLoaded", function () {
         home();
+      });
     </script>
-</head>
-<body>
+  </head>
+  <body>
     <div class="container">
-        <nav class="homeNav">
-            <p class="user"></p>
-        </nav>
+      <nav id="homeNav">
+        <p onclick="logout()" id="userDP" title="logout"></p>
+      </nav>
     </div>
-    
-</body>
+  </body>
 </html>

@@ -29,10 +29,8 @@ function login() {
   let password = document.getElementById("password").value;
 
   let credentials = localStorage.credentials;
-  console.log(typeof credentials, credentials);
 
   const parsedCredentials = JSON.parse(credentials);
-  console.log(typeof parsedCredentials, parsedCredentials);
 
   if (
     username == parsedCredentials.username &&
@@ -44,5 +42,21 @@ function login() {
 
 /* home */
 function home() {
-  console.log('home loaded');
+  let credentials = localStorage.credentials;
+  const parsedCredentials = JSON.parse(credentials);
+
+  console.log(parsedCredentials.username);
+
+  let name = parsedCredentials.username;
+
+  let words = name.split(" ");
+
+  let dp = words.map((word) => word[0]).join("").slice(0,2);
+
+  document.getElementById("userDP").innerHTML = dp;
+
+}
+
+function logout() {
+  window.location.href = "/login.html";
 }
