@@ -15,8 +15,6 @@ function register() {
       };
       let stringCredentials = JSON.stringify(credentials);
       localStorage.setItem("credentials", stringCredentials);
-      document.getElementById("username").value = "";
-      document.getElementById("password").value = "";
       document.getElementById("confirmPassword").value = "";
       window.location.href = "/login.html";
     }
@@ -51,7 +49,7 @@ function home() {
 
   let words = name.split(" ");
 
-  let dp = words.map((word) => word[0]).join("").slice(0,2);
+  let dp = words.map((word) => word[0]).join("").slice(0,2).toUpperCase();
 
   document.getElementById("userDP").innerHTML = dp;
 
