@@ -18,6 +18,12 @@ function register() {
       document.getElementById("confirmPassword").value = "";
       window.location.href = "/login.html";
     }
+  } else if (
+    // username.length <= 1 ||
+    password.length <= 3 ||
+    confirmPassword.length <= 3
+  ) {
+    alert('password should be atleast 4 characters');
   }
 }
 
@@ -35,6 +41,11 @@ function login() {
     password == parsedCredentials.password
   ) {
     window.location.href = "/home.html";
+  } else if (
+    username != parsedCredentials.username ||
+    password != parsedCredentials.password
+  ) {
+    alert("UserName and Password don't match");
   }
 }
 
@@ -49,10 +60,13 @@ function home() {
 
   let words = name.split(" ");
 
-  let dp = words.map((word) => word[0]).join("").slice(0,2).toUpperCase();
+  let dp = words
+    .map((word) => word[0])
+    .join("")
+    .slice(0, 2)
+    .toUpperCase();
 
   document.getElementById("userDP").innerHTML = dp;
-
 }
 
 function logout() {
