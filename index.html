@@ -11,15 +11,36 @@
     <div class="signContainer">
       <h1>Register</h1>
       <form onsubmit="return false;" class="form">
-        <input name="username" id="username" class="userForm" type="text" placeholder="username" required/>
-        <input name="password" id="password" class="userForm" type="password" placeholder="password" required/>
-        <input name="confirmPassword" id="confirmPassword" class="userForm" type="password" placeholder="confirm password" required/>
-        <input 
-            type="submit"
-            class="regButton"
-            onclick="register()"
-            value="Register"
-        >
+        <input
+          name="username"
+          id="username"
+          class="userForm"
+          type="text"
+          placeholder="username"
+        />
+        <p id="nameRequired"></p>
+        <input
+          name="password"
+          id="password"
+          class="userForm"
+          type="password"
+          placeholder="password"
+        />
+        <p id="passwordRequired"></p>
+        <input
+          name="confirmPassword"
+          id="confirmPassword"
+          class="userForm"
+          type="password"
+          placeholder="confirm password"
+        />
+        <p id="confirmPassRequired"></p>
+        <input
+          type="submit"
+          class="regButton"
+          onclick="register()"
+          value="Register"
+        />
       </form>
       <div class="registerLogin">
         <a href="login.html">login</a>

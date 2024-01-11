@@ -11,8 +11,24 @@
     <form onsubmit="return false;" class="signContainer">
       <h1>Login</h1>
       <div class="form">
-        <input required name="username" id="username" class="userForm" type="text" placeholder="username" />
-        <input required name="password" id="password" class="userForm" type="password" placeholder="password" />
+        <input
+          name="username"
+          id="username"
+          class="userForm"
+          type="text"
+          placeholder="username"
+        />
+        <p id="loginNameRequired"></p>
+        <input
+          name="password"
+          id="password"
+          class="userForm"
+          type="password"
+          placeholder="password"
+        />
+        <p id="loginPassRequired"></p>
+        <p id="noMatch"></p>
+
         <button class="regButton" onclick="login()">Login</button>
       </div>
       <div class="registerLogin">
