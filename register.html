@@ -10,7 +10,7 @@
   <body>
     <div class="signContainer">
       <h1>Register</h1>
-      <div class="form">
+      <form onsubmit="return false;" class="form">
         <input name="username" id="username" class="userForm" type="text" placeholder="username"/>
         <input name="password" id="password" class="userForm" type="password" placeholder="password" />
         <input name="confirmPassword" id="confirmPassword" class="userForm" type="password" placeholder="confirm password" />
@@ -18,7 +18,7 @@
             class="regButton"
             onclick="register()"
         >Register</button>
-      </div>
+      </form>
       <div class="registerLogin">
         <a href="login.html">login</a>
       </div>
