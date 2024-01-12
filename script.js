@@ -100,8 +100,6 @@ function home() {
   let credentials = localStorage.credentials;
   const parsedCredentials = JSON.parse(credentials);
 
-  console.log(parsedCredentials.username);
-
   let name = parsedCredentials.username;
 
   let words = name.split(" ");
@@ -113,6 +111,65 @@ function home() {
     .toUpperCase();
 
   document.getElementById("userDP").innerHTML = dp;
+
+  /* api call */
+  async function first() {
+    try {
+      const response = await fetch("https://reqres.in/api/users?page=2");
+
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+
+      const data = await response.json();
+      return data;
+    } catch (error) {
+      console.error(error.message);
+    }
+  }
+
+  async function fetchData() {
+    try {
+      ans = await first();
+      const userData = ans.data;
+
+      const dashboardContainer = document.getElementById("dashboardContainer");
+      // const dashboardContainer = document.getElementById("dashboardContainer");
+
+      userData.map((i) => {
+        const inputElement = document.createElement("img");
+        const userName = document.createElement("p");
+        const userEmail = document.createElement("p");
+        const details = document.createElement("div");
+        userName.textContent = i.first_name;
+        userEmail.textContent = i.email;
+        details.style.border='1px solid black';
+        details.style.height='320px';
+        details.style.display='flex'
+        details.style.flexDirection='column'
+        details.style.alignItems='center';
+        details.style.padding='10px';
+        userName.style.fontWeight='bold';
+        userEmail.style.margin='10px';
+        details.style.borderRadius='10px'
+
+        inputElement.setAttribute("src", i.avatar);
+        inputElement.setAttribute("height", "220px");
+        inputElement.setAttribute("width", "220px");
+        inputElement.setAttribute("border", "2px solid green");
+        inputElement.setAttribute("alt", i.first_name);
+
+        details.appendChild(userName);
+        details.appendChild(userEmail);
+        details.appendChild(inputElement);
+        dashboardContainer.appendChild(details)
+      });
+    } catch (error) {
+      console.error(error.message);
+    }
+  }
+
+  fetchData();
 }
 
 function logout() {

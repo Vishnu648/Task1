@@ -50,7 +50,6 @@
 /* Home */
 .container{
     background-color: antiquewhite;
-    height: 100vh;
     width: 100vw;
 }
 #homeNav{
@@ -71,4 +70,12 @@
 
 #noMatch{
     margin: 10px 0;
+}
+#dashboardContainer{
+    margin-top: 30px;
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-evenly;
 }
