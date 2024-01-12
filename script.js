@@ -23,6 +23,9 @@ function register() {
     document.getElementById("nameRequired").innerText = require;
     document.getElementById("nameRequired").style.color = "red";
   }
+  if (username.length >= 3) {
+    document.getElementById("nameRequired").innerText = '';
+  }
   if (username.length == 0) {
     let require = "username is required";
     document.getElementById("nameRequired").innerText = require;
@@ -32,6 +35,9 @@ function register() {
     let require = "password is required";
     document.getElementById("passwordRequired").innerText = require;
     document.getElementById("passwordRequired").style.color = "red";
+  }
+  if (password.length >= 4) {
+    document.getElementById("passwordRequired").innerText = '';
   }
   if (confirmPassword.length < 4 && confirmPassword.length > 0) {
     let require = "confirm password is required";
@@ -74,6 +80,9 @@ function login() {
     let require = "username is required";
     document.getElementById("loginNameRequired").innerText = require;
     document.getElementById("loginNameRequired").style.color = "red";
+  }
+  if (username.length > 0) {
+    document.getElementById("loginNameRequired").innerText = '';
   }
   if (password.length == 0) {
     let require = "password is required";
