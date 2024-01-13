@@ -3,14 +3,14 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Login</title>
+    <title>Register</title>
     <link rel="stylesheet" href="style.css" />
     <script src="script.js"></script>
   </head>
   <body>
-    <form onsubmit="return false;" class="signContainer">
-      <h1>Login</h1>
-      <div class="form">
+    <div class="signContainer">
+      <h1>Register</h1>
+      <form onsubmit="return false;" class="form">
         <input
           name="username"
           id="username"
@@ -18,7 +18,7 @@
           type="text"
           placeholder="username"
         />
-        <p id="loginNameRequired"></p>
+        <p id="nameRequired"></p>
         <input
           name="password"
           id="password"
@@ -26,14 +26,25 @@
           type="password"
           placeholder="password"
         />
-        <p id="loginPassRequired"></p>
-        <p id="noMatch"></p>
-
-        <button class="regButton" onclick="login()">Login</button>
-      </div>
+        <p id="passwordRequired"></p>
+        <input
+          name="confirmPassword"
+          id="confirmPassword"
+          class="userForm"
+          type="password"
+          placeholder="confirm password"
+        />
+        <p id="confirmPassRequired"></p>
+        <input
+          type="submit"
+          class="regButton"
+          onclick="register()"
+          value="Register"
+        />
+      </form>
       <div class="registerLogin">
-        <a href="register.html">register</a>
+        <a href="login.html">login</a>
       </div>
-    </form>
+    </div>
   </body>
 </html>

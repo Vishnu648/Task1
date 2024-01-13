@@ -54,7 +54,12 @@ function register() {
     document.getElementById("passwordRequired").innerText = require;
     document.getElementById("passwordRequired").style.color = "red";
   }
-  if (password != confirmPassword) {
+  if(confirmPassword.length==0){
+    let require = "confirm password is required";
+    document.getElementById("confirmPassRequired").innerText = require;
+    document.getElementById("confirmPassRequired").style.color = "red";
+  }
+  if (confirmPassword.length!=0 && password != confirmPassword) {
     let require = "password do not match";
     document.getElementById("confirmPassRequired").innerText = require;
     document.getElementById("confirmPassRequired").style.color = "red";
@@ -74,7 +79,7 @@ function login() {
     username == parsedCredentials.username &&
     password == parsedCredentials.password
   ) {
-    window.location.href = "/home.html";
+    window.location.href = "/index.html";
   }
   if (username.length == 0) {
     let require = "username is required";
@@ -146,14 +151,14 @@ function home() {
       // const dashboardContainer = document.getElementById("dashboardContainer");
 
       userData.map((i) => {
-        const inputElement = document.createElement("img");
+        const profilePic = document.createElement("img");
         const userName = document.createElement("p");
         const userEmail = document.createElement("p");
         const details = document.createElement("div");
-        userName.textContent = i.first_name;
+        userName.textContent = `${i.first_name} ${i.last_name}`;
         userEmail.textContent = i.email;
         details.style.border='1px solid black';
-        details.style.height='320px';
+        details.style.height='280px';
         details.style.display='flex'
         details.style.flexDirection='column'
         details.style.alignItems='center';
@@ -162,15 +167,17 @@ function home() {
         userEmail.style.margin='10px';
         details.style.borderRadius='10px'
 
-        inputElement.setAttribute("src", i.avatar);
-        inputElement.setAttribute("height", "220px");
-        inputElement.setAttribute("width", "220px");
-        inputElement.setAttribute("border", "2px solid green");
-        inputElement.setAttribute("alt", i.first_name);
+        profilePic.setAttribute("src", i.avatar);
+        profilePic.style.marginTop='20px'
+
+        profilePic.setAttribute("height", "160px");
+        profilePic.setAttribute("width", "160px");
+        profilePic.setAttribute("border", "2px solid green");
+        profilePic.setAttribute("alt", i.first_name);
 
         details.appendChild(userName);
         details.appendChild(userEmail);
-        details.appendChild(inputElement);
+        details.appendChild(profilePic);
         dashboardContainer.appendChild(details)
       });
     } catch (error) {
@@ -182,5 +189,5 @@ function home() {
 }
 
 function logout() {
-  window.location.href = "/login.html";
+  window.location.href = "/register.html";
 }

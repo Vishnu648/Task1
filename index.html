@@ -3,47 +3,29 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Register</title>
+    <title>Home</title>
     <link rel="stylesheet" href="style.css" />
     <script src="script.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        home();
+      });
+    </script>
+    <style>
+      img {
+        object-fit: cover;
+        cursor: pointer;
+        border-radius: 50%;
+      }
+    </style>
   </head>
   <body>
-    <div class="signContainer">
-      <h1>Register</h1>
-      <form onsubmit="return false;" class="form">
-        <input
-          name="username"
-          id="username"
-          class="userForm"
-          type="text"
-          placeholder="username"
-        />
-        <p id="nameRequired"></p>
-        <input
-          name="password"
-          id="password"
-          class="userForm"
-          type="password"
-          placeholder="password"
-        />
-        <p id="passwordRequired"></p>
-        <input
-          name="confirmPassword"
-          id="confirmPassword"
-          class="userForm"
-          type="password"
-          placeholder="confirm password"
-        />
-        <p id="confirmPassRequired"></p>
-        <input
-          type="submit"
-          class="regButton"
-          onclick="register()"
-          value="Register"
-        />
-      </form>
-      <div class="registerLogin">
-        <a href="login.html">login</a>
+    <div class="container">
+      <nav id="homeNav">
+        <p onclick="logout()" id="userDP" title="logout"></p>
+      </nav>
+      <div id="dashboardContainer">
+        <div id="single"></div>
       </div>
     </div>
   </body>
