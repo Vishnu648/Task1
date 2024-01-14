@@ -22,8 +22,8 @@ function register() {
 
 /* login */
 function login() {
-  let username = document.getElementById("username").value;
-  let password = document.getElementById("password").value;
+  let username = document.getElementById("loginUsername").value;
+  let password = document.getElementById("loginPassword").value;
 
   let credentials = localStorage.credentials;
 
@@ -35,19 +35,7 @@ function login() {
   ) {
     window.location.href = "/index.html";
   }
-  if (username.length == 0) {
-    let require = "username is required";
-    document.getElementById("loginNameRequired").innerText = require;
-    document.getElementById("loginNameRequired").style.color = "red";
-  }
-  if (username.length > 0) {
-    document.getElementById("loginNameRequired").innerText = "";
-  }
-  if (password.length == 0) {
-    let require = "password is required";
-    document.getElementById("loginPassRequired").innerText = require;
-    document.getElementById("loginPassRequired").style.color = "red";
-  }
+
   if (username.length != 0 && password.length != 0) {
     document.getElementById("loginNameRequired").innerText = "";
     document.getElementById("loginPassRequired").innerText = "";
@@ -146,8 +134,8 @@ function logout() {
   window.location.href = "/register.html";
 }
 
-/* Ajax Register page validatoin */
 $(document).ready(function () {
+  /* Ajax Register page validatoin */
   $("#username").blur(function () {
     let username = document.getElementById("username").value;
     if (username.length < 3) {
@@ -197,6 +185,42 @@ $(document).ready(function () {
     }
     if (confirmPassword == password) {
       document.getElementById("confirmPassRequired").innerText = "";
+    }
+  });
+
+  /* Ajax Login page validatoin */
+  $("#loginUsername").blur(function () {
+    let username = document.getElementById("loginUsername").value;
+    if (username.length == 0) {
+      let require = "username is required";
+      document.getElementById("loginNameRequired").innerText = require;
+      document.getElementById("loginNameRequired").style.color = "red";
+    }
+    if (username.length > 0) {
+      document.getElementById("loginNameRequired").innerText = "";
+    }
+  });
+
+  $("#loginPassword").blur(function () {
+    let username = document.getElementById("loginUsername").value;
+    let password = document.getElementById("loginPassword").value;
+    if (password.length == 0) {
+      let require = "password is required";
+      document.getElementById("loginPassRequired").innerText = require;
+      document.getElementById("loginPassRequired").style.color = "red";
+    }
+    if (username.length != 0 && password.length != 0) {
+      document.getElementById("loginNameRequired").innerText = "";
+      document.getElementById("loginPassRequired").innerText = "";
+
+      if (
+        username != parsedCredentials.username ||
+        password != parsedCredentials.password
+      ) {
+        let noMatch = "Username and Password didn't match";
+        document.getElementById("noMatch").innerText = noMatch;
+        document.getElementById("noMatch").style.color = "red";
+      }
     }
   });
 });
