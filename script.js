@@ -1,3 +1,155 @@
+$(document).ready(function () {
+  /* Ajax Register page validatoin */
+  $("#username").blur(function () {
+    let username = document.getElementById("username").value;
+    if (username.length < 3) {
+      let require = "name should contain atleast 3 characters";
+      document.getElementById("nameRequired").innerText = require;
+      document.getElementById("nameRequired").style.color = "red";
+    }
+    if (username.length >= 3) {
+      document.getElementById("nameRequired").innerText = "";
+    }
+    if (username.length == 0) {
+      let require = "username is required";
+      document.getElementById("nameRequired").innerText = require;
+      document.getElementById("nameRequired").style.color = "red";
+    }
+  });
+  $("#password").blur(function () {
+    let password = document.getElementById("password").value;
+    let numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+    let passLength = password.length;
+    let upper = 0,
+      lower = 0,
+      number = 0;
+
+    let includesNumber = numbers.some((num) =>
+      password.includes(num.toString())
+    );
+
+    if (includesNumber) {
+      number = 1;
+    }
+
+    for (let i = 0; i < passLength; i++) {
+      if (upper == 0) {
+        if (password[i] == password[i].toUpperCase()) {
+          upper = 1;
+        }
+      }
+      if (lower == 0) {
+        if (password[i] == password[i].toLowerCase()) {
+          lower = 1;
+        }
+      }
+      if (upper == 1 && lower == 1) {
+        break;
+      }
+    }
+
+    if (password.length >= 4) {
+      let require = "";
+      document.getElementById("passwordRequired").style.color = "red";
+      if (upper == 1 && lower == 1 && number == 1) {
+        require = "";
+      } else {
+        if (upper == 1 && lower == 0 && number == 0) {
+          require = "atlease 1 lowercase and 1 number required";
+          document.getElementById("passwordRequired").innerText = require;
+        }
+        if (upper == 1 && lower == 0 && number == 1) {
+          require = "atlease 1 lowerCase required";
+          document.getElementById("passwordRequired").innerText = require;
+        }
+
+        if (upper == 0 && lower == 1 && number == 0) {
+          require = "atlease 1 upperCase and 1 number required";
+          document.getElementById("passwordRequired").innerText = require;
+        }
+        if (upper == 1 && lower == 1 && number == 0) {
+          require = "atlease 1 number required";
+          document.getElementById("passwordRequired").innerText = require;
+        }
+        if (upper == 0 && lower == 1 && number == 1) {
+          require = "atlease 1 upperCase required";
+          document.getElementById("passwordRequired").innerText = require;
+        }
+        if (upper == 0 && lower == 0 && number == 1) {
+          require = "atlease 1 upperCase and 1 lowerCase required";
+          document.getElementById("passwordRequired").innerText = require;
+        }
+      }
+    }
+
+    if (password.length < 4) {
+      let require = "password is required";
+      document.getElementById("passwordRequired").innerText = require;
+      document.getElementById("passwordRequired").style.color = "red";
+    }
+    if (password.length > 0 && password.length < 4) {
+      let require = "password should contain min 4 characters";
+      document.getElementById("passwordRequired").innerText = require;
+      document.getElementById("passwordRequired").style.color = "red";
+    }
+  });
+
+  $("#confirmPassword").blur(function () {
+    let confirmPassword = document.getElementById("confirmPassword").value;
+    let password = document.getElementById("password").value;
+
+    if (confirmPassword.length == 0) {
+      let require = "confirm password is required";
+      document.getElementById("confirmPassRequired").innerText = require;
+      document.getElementById("confirmPassRequired").style.color = "red";
+    }
+    if (confirmPassword.length != 0 && password != confirmPassword) {
+      let require = "password do not match";
+      document.getElementById("confirmPassRequired").innerText = require;
+      document.getElementById("confirmPassRequired").style.color = "red";
+    }
+    if (confirmPassword == password) {
+      document.getElementById("confirmPassRequired").innerText = "";
+    }
+  });
+
+  /* Ajax Login page validatoin */
+  $("#loginUsername").blur(function () {
+    let username = document.getElementById("loginUsername").value;
+    if (username.length == 0) {
+      let require = "username is required";
+      document.getElementById("loginNameRequired").innerText = require;
+      document.getElementById("loginNameRequired").style.color = "red";
+    }
+    if (username.length > 0) {
+      document.getElementById("loginNameRequired").innerText = "";
+    }
+  });
+
+  $("#loginPassword").blur(function () {
+    let username = document.getElementById("loginUsername").value;
+    let password = document.getElementById("loginPassword").value;
+    if (password.length == 0) {
+      let require = "password is required";
+      document.getElementById("loginPassRequired").innerText = require;
+      document.getElementById("loginPassRequired").style.color = "red";
+    }
+    if (username.length != 0 && password.length != 0) {
+      document.getElementById("loginNameRequired").innerText = "";
+      document.getElementById("loginPassRequired").innerText = "";
+
+      if (
+        username != parsedCredentials.username ||
+        password != parsedCredentials.password
+      ) {
+        let noMatch = "Username and Password didn't match";
+        document.getElementById("noMatch").innerText = noMatch;
+        document.getElementById("noMatch").style.color = "red";
+      }
+    }
+  });
+});
+
 /* register */
 function register() {
   let username = document.getElementById("username").value;
@@ -133,94 +285,3 @@ function home() {
 function logout() {
   window.location.href = "/register.html";
 }
-
-$(document).ready(function () {
-  /* Ajax Register page validatoin */
-  $("#username").blur(function () {
-    let username = document.getElementById("username").value;
-    if (username.length < 3) {
-      let require = "name should contain atleast 3 characters";
-      document.getElementById("nameRequired").innerText = require;
-      document.getElementById("nameRequired").style.color = "red";
-    }
-    if (username.length >= 3) {
-      document.getElementById("nameRequired").innerText = "";
-    }
-    if (username.length == 0) {
-      let require = "username is required";
-      document.getElementById("nameRequired").innerText = require;
-      document.getElementById("nameRequired").style.color = "red";
-    }
-  });
-  $("#password").blur(function () {
-    let password = document.getElementById("password").value;
-    if (password.length < 4) {
-      let require = "password is required";
-      document.getElementById("passwordRequired").innerText = require;
-      document.getElementById("passwordRequired").style.color = "red";
-    }
-    if (password.length >= 4) {
-      document.getElementById("passwordRequired").innerText = "";
-    }
-    if (password.length > 0 && password.length < 4) {
-      let require = "password should contain min 4 characters";
-      document.getElementById("passwordRequired").innerText = require;
-      document.getElementById("passwordRequired").style.color = "red";
-    }
-  });
-
-  $("#confirmPassword").blur(function () {
-    let confirmPassword = document.getElementById("confirmPassword").value;
-    let password = document.getElementById("password").value;
-
-    if (confirmPassword.length == 0) {
-      let require = "confirm password is required";
-      document.getElementById("confirmPassRequired").innerText = require;
-      document.getElementById("confirmPassRequired").style.color = "red";
-    }
-    if (confirmPassword.length != 0 && password != confirmPassword) {
-      let require = "password do not match";
-      document.getElementById("confirmPassRequired").innerText = require;
-      document.getElementById("confirmPassRequired").style.color = "red";
-    }
-    if (confirmPassword == password) {
-      document.getElementById("confirmPassRequired").innerText = "";
-    }
-  });
-
-  /* Ajax Login page validatoin */
-  $("#loginUsername").blur(function () {
-    let username = document.getElementById("loginUsername").value;
-    if (username.length == 0) {
-      let require = "username is required";
-      document.getElementById("loginNameRequired").innerText = require;
-      document.getElementById("loginNameRequired").style.color = "red";
-    }
-    if (username.length > 0) {
-      document.getElementById("loginNameRequired").innerText = "";
-    }
-  });
-
-  $("#loginPassword").blur(function () {
-    let username = document.getElementById("loginUsername").value;
-    let password = document.getElementById("loginPassword").value;
-    if (password.length == 0) {
-      let require = "password is required";
-      document.getElementById("loginPassRequired").innerText = require;
-      document.getElementById("loginPassRequired").style.color = "red";
-    }
-    if (username.length != 0 && password.length != 0) {
-      document.getElementById("loginNameRequired").innerText = "";
-      document.getElementById("loginPassRequired").innerText = "";
-
-      if (
-        username != parsedCredentials.username ||
-        password != parsedCredentials.password
-      ) {
-        let noMatch = "Username and Password didn't match";
-        document.getElementById("noMatch").innerText = noMatch;
-        document.getElementById("noMatch").style.color = "red";
-      }
-    }
-  });
-});
