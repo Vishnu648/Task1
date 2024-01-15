@@ -218,7 +218,7 @@ function home() {
     .slice(0, 2)
     .toUpperCase();
 
-  document.getElementById("userDP").innerHTML = dp;
+  document.getElementById("userDP").innerHTML = dp || 'VS';
 
   /* api call */
   async function first() {
